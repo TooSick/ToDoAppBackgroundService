@@ -19,7 +19,7 @@ namespace ToDoBackgoundService.Services
         public async Task ScheduleTaskAsync(ToDoItem item)
         {
             var scheduler = await _schedulerFactory.GetScheduler();
-            var deleteTime = new DateTimeOffset(item.DueDate.AddMinutes(1), TimeSpan.Zero);
+            var deleteTime = new DateTimeOffset(item.DueDate.AddHours(8), TimeSpan.Zero);
 
             var existingJob = await scheduler.GetJobDetail(new JobKey($"DeleteToDo-{item.Id}"));
 
